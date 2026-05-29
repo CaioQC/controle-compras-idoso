@@ -22,9 +22,21 @@ export default function Login({ mudarTela }) {
 
     setIsSubmitting(true);
 
+    // Verificar usuários cadastrados no localStorage
+    const usuariosCadastrados = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuario = usuariosCadastrados.find(u => u.email === email.toLowerCase() && u.senha === senha);
+
     // Regra de Acesso para a apresentação de hoje (Usuário Fixo)
     if (email === 'admin@familia.com' && senha === '123456') {
+      localStorage.setItem('currentUser', JSON.stringify({
+        email: 'admin@familia.com',
+        nome: 'Administrador',
+        senha: '123456'
+      }));
       mudarTela('home'); // Sucesso: Vai para o Controle de Necessidades
+    } else if (usuario) {
+      localStorage.setItem('currentUser', JSON.stringify(usuario));
+      mudarTela('home'); // Usuário cadastrado
     } else {
       setErrorMessage('Acesso Negado: Familiar não identificado ou senha incorreta!');
     }
@@ -98,7 +110,12 @@ export default function Login({ mudarTela }) {
             </button>
           </form>
 
-          <p className="login-footer">Acesso restrito aos familiares cadastrados</p>
+          <p className="login-footer">
+            Não possui conta?{' '}
+            <button onClick={() => mudarTela('cadastro')} className="login-link">
+              Cadastre-se
+            </button>
+          </p>
         </div>
       </div>
 

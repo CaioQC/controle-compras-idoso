@@ -26,38 +26,49 @@
   flex-direction: column;
 }
 
+.input-with-icon {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #6c757d;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.input-with-icon input,
+.input-with-icon select {
+  width: 100%;
+  height: 44px;
+  padding: 10px 12px 10px 38px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  background: #ffffff;
+  font-size: 16px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+}
+
 .row-group {
   display: flex;
   gap: 16px;
 }
 
-.cadastro-form input[type="text"],
-.cadastro-form input[type="email"],
-.cadastro-form input[type="password"],
-.cadastro-form select {
-  height: 44px;
-  padding: 10px 12px;
-  border: 1px solid #ced4da;
-  border-radius: 10px;
-  font-size: 16px;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  color: #212529;
-  transition: border-color 0.2s, box-shadow 0.2s;
+.row-group .input-with-icon {
+  flex: 1;
 }
 
-.cadastro-form input[type="text"]:focus,
-.cadastro-form input[type="email"]:focus,
-.cadastro-form input[type="password"]:focus,
-.cadastro-form select:focus {
+.input-with-icon input:focus,
+.input-with-icon select:focus {
   outline: none;
   border-color: #0d6efd;
   box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.18);
-}
-
-.row-group select {
-  flex: 1;
 }
 
 .input-error {
