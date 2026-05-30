@@ -38,7 +38,7 @@ $ npx prisma migrate deploy
 
 # Etapa 2
 $ npm run start:dev
-
+```
 ## Resources
 
 Check out a few resources that may come in handy when working with NestJS:
