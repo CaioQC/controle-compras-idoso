@@ -30,3 +30,5 @@ yarn-error.log*
 # Arquivos do Sistema Operacional (Windows/Mac)
 .DS_Store
 Thumbs.db
+
+.vscode
