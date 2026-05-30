@@ -31,6 +31,9 @@
 $ npm install
 ```
 
+## Configurando o .env
+### Por questões de boas práticas o arquivo ".env" não é enviado ao repositório, porém, por tratar-se de um projeto um projeto simples e educacional, as informações contidas no arquivo ".evn.example" são exatamente o que é necessário para rodar o código localmente. Portanto, basta apenas copiar o contéudo presente no arquivo ".env.example", criar um arquivo ".env" e colar o que foi copiado dentro do ".env".
+
 ## Rodando o projeto
 ```bash
 # Etapa 1 - Se for a primeira vez rodando o código localmente é necessário executar o seguinte comando a seguir, caso não seja, pode prosseguir para a etapa 2:
