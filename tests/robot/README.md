@@ -49,6 +49,14 @@ robot --loglevel DEBUG hdu2_cadastro_item.robot
 - **CT-02-03**: Salvar item sem informar o familiar responsável
 - **CT-02-04**: Cadastro de item com sucesso
 
+## US-001 — Cadastro de usuário
+
+- **CT-01-01**: Cadastro realizado com sucesso
+- **CT-01-02**: Nome incompleto
+- **CT-01-03**: E-mail inválido
+- **CT-01-04**: Senha fraca
+- **CT-01-05**: E-mail já cadastrado
+
 ## Relatórios
 
 Após a execução, serão gerados:

@@ -231,6 +231,28 @@ class TestKeywords(object):
         btn_cadastrar.click()
         time.sleep(2)
 
+    def limpar_localstorage_usuarios(self):
+        """Limpa os dados de usuários e sessão do localStorage"""
+        if self.driver:
+            self.driver.execute_script("localStorage.removeItem('usuarios'); localStorage.removeItem('currentUser');")
+
+    def verificar_mensagem_erro_cadastro(self, mensagem):
+        """Verifica se uma mensagem de erro de cadastro está visível"""
+        wait = WebDriverWait(self.driver, 10)
+        erros = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, '.cadastro-error')))
+        for erro in erros:
+            if mensagem.lower() in erro.text.lower():
+                return True
+        raise AssertionError(f"Mensagem de erro de cadastro esperada não encontrada: {mensagem}")
+
+    def verificar_mensagem_sucesso_cadastro(self, mensagem):
+        """Verifica se a mensagem de cadastro com sucesso está visível"""
+        wait = WebDriverWait(self.driver, 10)
+        sucesso = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="cadastro-success"]')))
+        if mensagem.lower() in sucesso.text.lower():
+            return True
+        raise AssertionError(f"Mensagem de sucesso de cadastro esperada não encontrada: {mensagem}")
+
     def verificar_redirecionamento_login(self):
         """Verifica se foi redirecionado para a tela de login"""
         wait = WebDriverWait(self.driver, 10)
