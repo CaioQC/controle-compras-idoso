@@ -9,7 +9,7 @@ export default function Configuracoes({ onLogout, onDeleteAccount, onBack }) {
 
   const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (!password) {
       setError('Por favor, insira sua senha para confirmar.');
       return;
@@ -18,16 +18,36 @@ export default function Configuracoes({ onLogout, onDeleteAccount, onBack }) {
     setError('');
     setIsDeleting(true);
 
-    // Simular validação de senha (em produção, isso seria validado no backend)
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    try {
+      const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
 
-    const user = usuarios.find(u => u.email === currentUser.email);
+      const loginResp = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: user.email, senha: password })
+      });
 
-    if (user && user.senha === password) {
-      onDeleteAccount();
-    } else {
-      setError('Senha incorreta. Tente novamente.');
+      if (!loginResp.ok) {
+        setError('Senha incorreta. Tente novamente.');
+        setIsDeleting(false);
+        return;
+      }
+
+      const { access_token } = await loginResp.json();
+
+      const deleteResp = await fetch('http://localhost:3000/usuario/me', {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${access_token}` }
+      });
+
+      if (deleteResp.ok) {
+        onDeleteAccount();
+      } else {
+        setError('Erro ao excluir conta. Tente novamente.');
+        setIsDeleting(false);
+      }
+    } catch {
+      setError('Erro ao comunicar com o servidor.');
       setIsDeleting(false);
     }
   };

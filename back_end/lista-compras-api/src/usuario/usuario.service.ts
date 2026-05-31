@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PerfilUsuario } from './enums/role.enums';
 import { HashService } from 'src/common/hash.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UsuarioService {
@@ -16,17 +17,24 @@ export class UsuarioService {
   async create(createUsuarioDto: CreateUsuarioDto) {
     const senhaCriptografada = await this.hashService.gerarHash(createUsuarioDto.senha)
 
-    const usuario = await this.prismaService.usuario.create({
-      data: {
-        ...createUsuarioDto,
-        senha: senhaCriptografada,
-        perfil: createUsuarioDto.perfil ?? PerfilUsuario.FAMILIA
+    try {
+      const usuario = await this.prismaService.usuario.create({
+        data: {
+          ...createUsuarioDto,
+          senha: senhaCriptografada,
+          perfil: createUsuarioDto.perfil ?? PerfilUsuario.FAMILIA
+        }
+      });
+
+      const { senha, ...usuarioSemSenha } = usuario;
+
+      return usuarioSemSenha;
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002') {
+        throw new ConflictException('E-mail já cadastrado');
       }
-    });
-
-    const { senha, ...usuarioSemSenha } = usuario;
-
-    return usuarioSemSenha;
+      throw error;
+    }
   }
 
   async findAll() {

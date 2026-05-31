@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 import time
 
 
-class TestKeywords(object):
+class Keywords(object):
     def __init__(self):
         self.driver = None
 
@@ -229,12 +229,30 @@ class TestKeywords(object):
         wait = WebDriverWait(self.driver, 10)
         btn_cadastrar = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '[data-testid="cadastro-submit"]')))
         btn_cadastrar.click()
-        time.sleep(2)
+        time.sleep(0.5)
 
-    def limpar_localstorage_usuarios(self):
-        """Limpa os dados de usuários e sessão do localStorage"""
-        if self.driver:
-            self.driver.execute_script("localStorage.removeItem('usuarios'); localStorage.removeItem('currentUser');")
+    def excluir_usuario_banco(self, email, senha):
+        """Remove o usuário via UI: faz login, vai às configurações e exclui a conta"""
+        if not self.driver:
+            return
+        try:
+            wait_curto = WebDriverWait(self.driver, 5)
+            wait_longo = WebDriverWait(self.driver, 10)
+
+            self.driver.get('http://localhost:5173')
+            wait_curto.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="login-email"]')))
+
+            self.preencher_campo_de_login(email, senha)
+            self.clicar_em_entrar()
+
+            wait_longo.until(EC.presence_of_element_located((By.CSS_SELECTOR, '.main-container')))
+
+            self.clicar_em_configuracoes()
+            self.clicar_em_excluir_conta()
+            self.digitar_senha_exclusao(senha)
+            self.confirmar_exclusao()
+        except Exception:
+            pass
 
     def verificar_mensagem_erro_cadastro(self, mensagem):
         """Verifica se uma mensagem de erro de cadastro está visível"""

@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
-Library           keywords.py
+Library           ../resources/Keywords.py
 
 *** Variables ***
 ${BASE_URL}       http://localhost:3000
