@@ -1,0 +1,197 @@
+{
+  "info": {
+    "name": "US-09 — Excluir Item de Compra",
+    "description": "Testes de API para o endpoint DELETE /itens-compra/:id (US-009).\n\nO endpoint exige autenticacao JWT.\n\nORDEM DE EXECUCAO:\n1. 'Setup — Login Admin'            -> salva {{admin_token}}\n2. 'Setup — Pegar categoria valida' -> salva {{categoria_id}}\n3. 'Setup — Criar item para excluir' -> cria um item e salva {{item_id}}\n4. Os casos de teste CT-09-xx\n\nDica: use o Collection Runner para rodar tudo na ordem de uma vez.\n\nPRE-REQUISITO: rodar o seed do backend (npx prisma db seed).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000", "type": "string" },
+    { "key": "admin_token", "value": "", "type": "string" },
+    { "key": "categoria_id", "value": "", "type": "string" },
+    { "key": "item_id", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Setup — Login Admin",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"senha\": \"admin1!\"\n}"
+        },
+        "url": { "raw": "{{base_url}}/auth/login", "host": ["{{base_url}}"], "path": ["auth", "login"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Login realizado com sucesso (200)\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "var json = pm.response.json();",
+              "pm.collectionVariables.set(\"admin_token\", json.access_token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Setup — Pegar categoria valida",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{admin_token}}" } ],
+        "url": { "raw": "{{base_url}}/categorias", "host": ["{{base_url}}"], "path": ["categorias"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Listagem de categorias OK (200)\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "var json = pm.response.json();",
+              "if (Array.isArray(json) && json.length > 0) {",
+              "    pm.collectionVariables.set(\"categoria_id\", json[0].id);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Setup — Criar item para excluir",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Item para exclusao\",\n  \"quantidade\": 1,\n  \"observacao\": \"sera removido pelo teste\",\n  \"categoriaId\": {{categoria_id}}\n}"
+        },
+        "url": { "raw": "{{base_url}}/itens-compra", "host": ["{{base_url}}"], "path": ["itens-compra"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Item criado com sucesso (201)\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "var json = pm.response.json();",
+              "pm.collectionVariables.set(\"item_id\", json.id);",
+              "console.log(\"item_id salvo:\", json.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-09-01 — Excluir item com sucesso",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{admin_token}}" } ],
+        "url": { "raw": "{{base_url}}/itens-compra/{{item_id}}", "host": ["{{base_url}}"], "path": ["itens-compra", "{{item_id}}"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code deve ser 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Resposta confirma o item excluido (mesmo id)\", function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(String(json.id)).to.eql(pm.collectionVariables.get(\"item_id\"));",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-09-02 — Confirmar que o item nao existe mais",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{admin_token}}" } ],
+        "url": { "raw": "{{base_url}}/itens-compra/{{item_id}}", "host": ["{{base_url}}"], "path": ["itens-compra", "{{item_id}}"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Apos excluir, buscar o item nao deve retornar dados.",
+              "// A API responde 200 com corpo vazio/null quando o item nao existe.",
+              "pm.test(\"Status code 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Corpo da resposta esta vazio (item nao encontrado)\", function () {",
+              "    var texto = pm.response.text();",
+              "    pm.expect(texto === \"\" || texto === \"null\").to.be.true;",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-09-03 — Excluir item inexistente",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{admin_token}}" } ],
+        "url": { "raw": "{{base_url}}/itens-compra/999999", "host": ["{{base_url}}"], "path": ["itens-compra", "999999"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// REQUISITO ideal: excluir um id que nao existe deveria retornar 404.",
+              "// ATENCAO: a API nao trata esse caso, entao provavelmente retorna 500.",
+              "// Se este teste FALHAR (vier 500 em vez de 404), e um defeito a reportar.",
+              "pm.test(\"Status code deve ser 404 (item nao encontrado)\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-09-04 — Excluir sem token de autenticacao",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": { "raw": "{{base_url}}/itens-compra/{{item_id}}", "host": ["{{base_url}}"], "path": ["itens-compra", "{{item_id}}"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code deve ser 401 (nao autorizado)\", function () {",
+              "    pm.response.to.have.status(401);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
