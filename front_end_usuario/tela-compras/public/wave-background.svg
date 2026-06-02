@@ -1,0 +1,73 @@
+<svg width="1600" height="320" viewBox="0 0 1600 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+
+    <linearGradient id="bgFade" x1="0" y1="0" x2="0" y2="320">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#A8CCFF" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <linearGradient id="wave1" x1="0" y1="0" x2="1600" y2="0">
+      <stop offset="0%" stop-color="#DCEBFF" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#B5D2FF" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="wave2" x1="0" y1="0" x2="1600" y2="0">
+      <stop offset="0%" stop-color="#CFE3FF" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#8EBBFF" stop-opacity="0.7"/>
+    </linearGradient>
+
+    <linearGradient id="wave3" x1="0" y1="0" x2="1600" y2="0">
+      <stop offset="0%" stop-color="#EAF3FF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#6EA6FF" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+
+  </defs>
+
+  <!-- fundo suave -->
+  <rect width="1600" height="320" fill="url(#bgFade)"/>
+
+  <!-- linha superior fina -->
+  <path
+    d="M0 235C340 250 640 255 980 230C1240 210 1450 180 1600 120"
+    stroke="#EAF3FF"
+    stroke-width="2"
+    fill="none"
+    opacity="0.9"
+  />
+
+  <!-- wave 1 -->
+  <path
+    d="M0 250C260 220 520 285 790 255C1100 220 1390 190 1600 95L1600 320L0 320Z"
+    fill="url(#wave1)"
+    filter="url(#blur)"
+  />
+
+  <!-- wave 2 -->
+  <path
+    d="M0 270C300 235 570 300 870 280C1170 255 1430 220 1600 130L1600 320L0 320Z"
+    fill="url(#wave2)"
+    opacity="0.95"
+  />
+
+  <!-- wave 3 -->
+  <path
+    d="M0 290C320 255 620 320 930 300C1220 280 1460 245 1600 165L1600 320L0 320Z"
+    fill="url(#wave3)"
+    opacity="0.9"
+  />
+
+  <!-- linha branca destaque -->
+  <path
+    d="M0 248C310 230 600 260 930 242C1240 225 1460 195 1600 118"
+    stroke="white"
+    stroke-width="2"
+    opacity="0.8"
+    fill="none"
+  />
+
+</svg>

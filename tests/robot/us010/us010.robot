@@ -42,7 +42,6 @@ US010-CT03 Confirmar com senha incorreta
     Digitar Senha Exclusao    senha_errada
     Confirmar Exclusao
     Verificar Mensagem Erro Senha
-    # Modal não fecha com senha incorreta, então cancelamos
     Cancelar Exclusao
     Realizar Logout
 
@@ -54,11 +53,8 @@ US010-CT04 Cancelar exclusão de conta
     Clicar Em Excluir Conta
     Cancelar Exclusao
     Verificar Tela Configuracoes
-    # Usa o botão voltar para sair da tela de configurações
     Clicar Botao Voltar Configuracoes
-    # Aguarda voltar para a tela principal
     Wait Until Element Is Visible    css=.main-container    10s
-    # Agora faz logout da tela principal
     Logout Da Tela Principal
     Realizar Login    ${EMAIL_TESTE}    ${SENHA_TESTE}
     Verificar Login Com Sucesso
@@ -107,7 +103,6 @@ Digitar Senha Exclusao
 
 Confirmar Exclusao
     Click Element    css=[data-testid="btn-confirmar-excluir-conta"]
-    # Não espera o modal fechar pois pode não fechar com senha incorreta
 
 Cancelar Exclusao
     Click Element    css=.btn-cancelar

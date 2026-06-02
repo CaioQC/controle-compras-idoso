@@ -1,736 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.0 on win32)" generated="20260528 21:07:32.568" rpa="false" schemaversion="4">
-<suite id="s1" name="Us010" source="C:\Users\kevin\OneDrive\Desktop\Trabalho da Faculdade\controle-compras-idoso\tests\robot\us010.robot">
+<robot generator="Robot 6.1.1 (Python 3.11.0 on win32)" generated="20260601 21:31:01.298" rpa="false" schemaversion="4">
+<suite id="s1" name="Us004 Cadastro Usuario" source="C:\Users\kevin\OneDrive\Desktop\Trabalho da Faculdade\controle-compras-idoso\tests\robot\us004_cadastro_usuario.robot">
 <kw name="Abrir Navegador" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${BASE_URL}</arg>
-<arg>chrome</arg>
+<arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20260528 21:07:32.810" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
-<status status="PASS" starttime="20260528 21:07:32.809" endtime="20260528 21:07:34.309"/>
+<msg timestamp="20260601 21:31:01.523" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<status status="PASS" starttime="20260601 21:31:01.523" endtime="20260601 21:31:03.067"/>
 </kw>
 <kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
 <arg>10s</arg>
 <doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" starttime="20260528 21:07:34.309" endtime="20260528 21:07:34.309"/>
+<status status="PASS" starttime="20260601 21:31:03.067" endtime="20260601 21:31:03.070"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20260528 21:07:34.309" endtime="20260528 21:07:34.332"/>
+<status status="PASS" starttime="20260601 21:31:03.070" endtime="20260601 21:31:03.107"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:32.809" endtime="20260528 21:07:34.332"/>
+<status status="PASS" starttime="20260601 21:31:01.523" endtime="20260601 21:31:03.107"/>
 </kw>
-<test id="s1-t1" name="US010-CT01 Criar usuário de teste" line="14">
+<test id="s1-t1" name="US004-CT01 Cadastro com Dados Válidos" line="12">
 <kw name="Ir Para Pagina">
 <arg>${BASE_URL}</arg>
 <kw name="Go To" library="SeleniumLibrary">
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20260528 21:07:34.333" level="INFO">Opening url 'http://localhost:3000'</msg>
-<status status="PASS" starttime="20260528 21:07:34.333" endtime="20260528 21:07:34.359"/>
+<msg timestamp="20260601 21:31:03.109" level="INFO">Opening url 'http://localhost:3000'</msg>
+<status status="PASS" starttime="20260601 21:31:03.109" endtime="20260601 21:31:03.139"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:34.333" endtime="20260528 21:07:34.359"/>
+<status status="PASS" starttime="20260601 21:31:03.108" endtime="20260601 21:31:03.139"/>
 </kw>
 <kw name="Clicar Em Cadastro">
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>css=.login-link</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:34.360" level="INFO">Clicking element 'css=.login-link'.</msg>
-<status status="PASS" starttime="20260528 21:07:34.359" endtime="20260528 21:07:34.452"/>
+<msg timestamp="20260601 21:31:03.140" level="INFO">Clicking element 'css=.login-link'.</msg>
+<status status="PASS" starttime="20260601 21:31:03.140" endtime="20260601 21:31:03.228"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <arg>css=.cadastro-form</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:34.452" endtime="20260528 21:07:34.477"/>
+<status status="PASS" starttime="20260601 21:31:03.228" endtime="20260601 21:31:03.250"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:34.359" endtime="20260528 21:07:34.477"/>
+<status status="PASS" starttime="20260601 21:31:03.140" endtime="20260601 21:31:03.251"/>
 </kw>
 <kw name="Preencher Nome Cadastro">
-<arg>${NOME_TESTE}</arg>
+<arg>João Silva Teste</arg>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>css=[data-testid="cadastro-nome"]</arg>
 <arg>${nome}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:34.479" level="INFO">Typing text 'Usuário Teste' into text field 'css=[data-testid="cadastro-nome"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:34.479" endtime="20260528 21:07:34.586"/>
+<msg timestamp="20260601 21:31:03.252" level="INFO">Typing text 'João Silva Teste' into text field 'css=[data-testid="cadastro-nome"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:03.252" endtime="20260601 21:31:03.359"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:34.477" endtime="20260528 21:07:34.586"/>
+<status status="PASS" starttime="20260601 21:31:03.251" endtime="20260601 21:31:03.359"/>
 </kw>
 <kw name="Preencher Email Cadastro">
-<arg>${EMAIL_TESTE}</arg>
+<arg>joao.silva.teste@email.com</arg>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>css=[data-testid="cadastro-email"]</arg>
 <arg>${email}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:34.587" level="INFO">Typing text 'teste@exclusao.com' into text field 'css=[data-testid="cadastro-email"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:34.587" endtime="20260528 21:07:34.667"/>
+<msg timestamp="20260601 21:31:03.361" level="INFO">Typing text 'joao.silva.teste@email.com' into text field 'css=[data-testid="cadastro-email"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:03.361" endtime="20260601 21:31:03.449"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:34.586" endtime="20260528 21:07:34.667"/>
+<status status="PASS" starttime="20260601 21:31:03.361" endtime="20260601 21:31:03.449"/>
 </kw>
 <kw name="Preencher Senha Cadastro">
-<arg>${SENHA_TESTE}</arg>
+<arg>Senha123@</arg>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>css=[data-testid="cadastro-senha"]</arg>
 <arg>${senha}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:34.668" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="cadastro-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:34.668" endtime="20260528 21:07:34.741"/>
+<msg timestamp="20260601 21:31:03.451" level="INFO">Typing text 'Senha123@' into text field 'css=[data-testid="cadastro-senha"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:03.450" endtime="20260601 21:31:03.541"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:34.668" endtime="20260528 21:07:34.741"/>
+<status status="PASS" starttime="20260601 21:31:03.449" endtime="20260601 21:31:03.541"/>
 </kw>
 <kw name="Preencher Confirmar Senha Cadastro">
-<arg>${SENHA_TESTE}</arg>
+<arg>Senha123@</arg>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>css=[data-testid="cadastro-confirmar-senha"]</arg>
 <arg>${senha}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:34.742" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="cadastro-confirmar-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:34.742" endtime="20260528 21:07:34.821"/>
+<msg timestamp="20260601 21:31:03.543" level="INFO">Typing text 'Senha123@' into text field 'css=[data-testid="cadastro-confirmar-senha"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:03.542" endtime="20260601 21:31:03.617"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:34.741" endtime="20260528 21:07:34.821"/>
+<status status="PASS" starttime="20260601 21:31:03.542" endtime="20260601 21:31:03.619"/>
 </kw>
 <kw name="Submeter Cadastro">
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>css=[data-testid="cadastro-submit"]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:34.822" level="INFO">Clicking element 'css=[data-testid="cadastro-submit"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:34.822" endtime="20260528 21:07:34.893"/>
+<msg timestamp="20260601 21:31:03.620" level="INFO">Clicking element 'css=[data-testid="cadastro-submit"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:03.619" endtime="20260601 21:31:03.686"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <arg>css=[data-testid="login-email"]</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:34.893" endtime="20260528 21:07:36.904"/>
+<status status="PASS" starttime="20260601 21:31:03.686" endtime="20260601 21:31:05.749"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:34.821" endtime="20260528 21:07:36.904"/>
+<status status="PASS" starttime="20260601 21:31:03.619" endtime="20260601 21:31:05.749"/>
 </kw>
 <kw name="Verificar Redirecionamento Login">
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <arg>css=[data-testid="login-email"]</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:36.905" endtime="20260528 21:07:36.918"/>
+<status status="PASS" starttime="20260601 21:31:05.750" endtime="20260601 21:31:05.764"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:36.905" endtime="20260528 21:07:36.918"/>
-</kw>
-<doc>Cria um usuário de teste para os casos de exclusão</doc>
-<tag>setup</tag>
-<tag>US010</tag>
-<status status="PASS" starttime="20260528 21:07:34.332" endtime="20260528 21:07:36.918"/>
-</test>
-<test id="s1-t2" name="US010-CT02 Aviso de irreversibilidade" line="26">
-<kw name="Realizar Login">
-<arg>${EMAIL_TESTE}</arg>
-<arg>${SENHA_TESTE}</arg>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:36.920" endtime="20260528 21:07:36.934"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>${email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:36.934" level="INFO">Typing text 'teste@exclusao.com' into text field 'css=[data-testid="login-email"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:36.934" endtime="20260528 21:07:36.995"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-senha"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:36.995" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="login-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:36.995" endtime="20260528 21:07:37.064"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="login-submit"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:37.065" level="INFO">Clicking element 'css=[data-testid="login-submit"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:37.064" endtime="20260528 21:07:37.166"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:37.166" endtime="20260528 21:07:37.184"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:36.920" endtime="20260528 21:07:37.184"/>
-</kw>
-<kw name="Clicar Em Configuracoes">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-configuracoes"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:37.185" level="INFO">Clicking element 'css=[data-testid="btn-configuracoes"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:37.184" endtime="20260528 21:07:37.263"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.configuracoes-card</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:37.263" endtime="20260528 21:07:37.280"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:37.184" endtime="20260528 21:07:37.280"/>
-</kw>
-<kw name="Clicar Em Excluir Conta">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-excluir-conta"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:37.281" level="INFO">Clicking element 'css=[data-testid="btn-excluir-conta"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:37.281" endtime="20260528 21:07:37.346"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="modal-excluir-conta"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:37.346" endtime="20260528 21:07:37.364"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:37.280" endtime="20260528 21:07:37.364"/>
-</kw>
-<kw name="Verificar Aviso Irreversibilidade">
 <kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css=.modal-description</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20260528 21:07:37.381" level="INFO">Element 'css=.modal-description' is displayed.</msg>
-<status status="PASS" starttime="20260528 21:07:37.364" endtime="20260528 21:07:37.381"/>
-</kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<arg>css=.modal-description</arg>
-<arg>irreversível</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<msg timestamp="20260528 21:07:37.397" level="INFO">Element 'css=.modal-description' contains text 'irreversível'.</msg>
-<status status="PASS" starttime="20260528 21:07:37.381" endtime="20260528 21:07:37.398"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:37.364" endtime="20260528 21:07:37.398"/>
-</kw>
-<kw name="Cancelar Exclusao">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=.btn-cancelar</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:37.399" level="INFO">Clicking element 'css=.btn-cancelar'.</msg>
-<status status="PASS" starttime="20260528 21:07:37.398" endtime="20260528 21:07:37.452"/>
-</kw>
-<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="modal-excluir-conta"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is not visible.</doc>
-<status status="PASS" starttime="20260528 21:07:37.453" endtime="20260528 21:07:47.464"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:37.398" endtime="20260528 21:07:47.464"/>
-</kw>
-<kw name="Realizar Logout">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-sair-config"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.464" level="INFO">Clicking element 'css=[data-testid="btn-sair-config"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.464" endtime="20260528 21:07:47.513"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-page"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:47.513" endtime="20260528 21:07:47.530"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:47.464" endtime="20260528 21:07:47.530"/>
-</kw>
-<doc>Verifica se o sistema exibe aviso destacando que a exclusão é irreversível</doc>
-<tag>aviso</tag>
-<tag>exclusao</tag>
-<tag>US010</tag>
-<status status="PASS" starttime="20260528 21:07:36.919" endtime="20260528 21:07:47.530"/>
-</test>
-<test id="s1-t3" name="US010-CT03 Confirmar com senha incorreta" line="36">
-<kw name="Realizar Login">
-<arg>${EMAIL_TESTE}</arg>
-<arg>${SENHA_TESTE}</arg>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:47.532" endtime="20260528 21:07:47.547"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>${email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.547" level="INFO">Typing text 'teste@exclusao.com' into text field 'css=[data-testid="login-email"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.547" endtime="20260528 21:07:47.619"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-senha"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.620" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="login-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.619" endtime="20260528 21:07:47.683"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
 <arg>css=[data-testid="login-submit"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.685" level="INFO">Clicking element 'css=[data-testid="login-submit"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.683" endtime="20260528 21:07:47.732"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:47.732" endtime="20260528 21:07:47.747"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:47.532" endtime="20260528 21:07:47.747"/>
-</kw>
-<kw name="Clicar Em Configuracoes">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-configuracoes"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.747" level="INFO">Clicking element 'css=[data-testid="btn-configuracoes"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.747" endtime="20260528 21:07:47.811"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.configuracoes-card</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:47.811" endtime="20260528 21:07:47.827"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:47.747" endtime="20260528 21:07:47.827"/>
-</kw>
-<kw name="Clicar Em Excluir Conta">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-excluir-conta"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.828" level="INFO">Clicking element 'css=[data-testid="btn-excluir-conta"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.828" endtime="20260528 21:07:47.875"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="modal-excluir-conta"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:47.875" endtime="20260528 21:07:47.890"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:47.827" endtime="20260528 21:07:47.890"/>
-</kw>
-<kw name="Digitar Senha Exclusao">
-<arg>senha_errada</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="input-senha-exclusao"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.891" level="INFO">Typing text 'senha_errada' into text field 'css=[data-testid="input-senha-exclusao"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.891" endtime="20260528 21:07:47.960"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:47.891" endtime="20260528 21:07:47.960"/>
-</kw>
-<kw name="Confirmar Exclusao">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-confirmar-excluir-conta"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:47.961" level="INFO">Clicking element 'css=[data-testid="btn-confirmar-excluir-conta"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:47.960" endtime="20260528 21:07:48.019"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:47.960" endtime="20260528 21:07:48.019"/>
-</kw>
-<kw name="Verificar Mensagem Erro Senha">
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css=.modal-error</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20260528 21:07:48.037" level="INFO">Element 'css=.modal-error' is displayed.</msg>
-<status status="PASS" starttime="20260528 21:07:48.020" endtime="20260528 21:07:48.037"/>
+<msg timestamp="20260601 21:31:05.780" level="INFO">Element 'css=[data-testid="login-submit"]' is displayed.</msg>
+<status status="PASS" starttime="20260601 21:31:05.764" endtime="20260601 21:31:05.780"/>
 </kw>
-<status status="PASS" starttime="20260528 21:07:48.020" endtime="20260528 21:07:48.037"/>
+<status status="PASS" starttime="20260601 21:31:05.749" endtime="20260601 21:31:05.780"/>
 </kw>
-<kw name="Cancelar Exclusao">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=.btn-cancelar</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:48.038" level="INFO">Clicking element 'css=.btn-cancelar'.</msg>
-<status status="PASS" starttime="20260528 21:07:48.038" endtime="20260528 21:07:48.088"/>
-</kw>
-<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="modal-excluir-conta"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is not visible.</doc>
-<status status="PASS" starttime="20260528 21:07:48.089" endtime="20260528 21:07:58.106"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:48.038" endtime="20260528 21:07:58.106"/>
-</kw>
-<kw name="Realizar Logout">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-sair-config"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:58.107" level="INFO">Clicking element 'css=[data-testid="btn-sair-config"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:58.106" endtime="20260528 21:07:58.152"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-page"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:58.152" endtime="20260528 21:07:58.166"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:58.106" endtime="20260528 21:07:58.166"/>
-</kw>
-<doc>Verifica se o sistema bloqueia a exclusão com senha incorreta</doc>
-<tag>exclusao</tag>
-<tag>senha-incorreta</tag>
-<tag>US010</tag>
-<status status="PASS" starttime="20260528 21:07:47.532" endtime="20260528 21:07:58.166"/>
-</test>
-<test id="s1-t4" name="US010-CT04 Cancelar exclusão de conta" line="49">
-<kw name="Realizar Login">
-<arg>${EMAIL_TESTE}</arg>
-<arg>${SENHA_TESTE}</arg>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:58.168" endtime="20260528 21:07:58.181"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>${email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:58.182" level="INFO">Typing text 'teste@exclusao.com' into text field 'css=[data-testid="login-email"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:58.182" endtime="20260528 21:07:58.242"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-senha"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:58.242" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="login-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:58.242" endtime="20260528 21:07:58.302"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="login-submit"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:58.303" level="INFO">Clicking element 'css=[data-testid="login-submit"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:58.302" endtime="20260528 21:07:58.346"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:58.346" endtime="20260528 21:07:58.361"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:58.167" endtime="20260528 21:07:58.361"/>
-</kw>
-<kw name="Clicar Em Configuracoes">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-configuracoes"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:58.363" level="INFO">Clicking element 'css=[data-testid="btn-configuracoes"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:58.361" endtime="20260528 21:07:58.403"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.configuracoes-card</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:58.403" endtime="20260528 21:07:58.418"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:58.361" endtime="20260528 21:07:58.418"/>
-</kw>
-<kw name="Clicar Em Excluir Conta">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-excluir-conta"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:58.419" level="INFO">Clicking element 'css=[data-testid="btn-excluir-conta"]'.</msg>
-<status status="PASS" starttime="20260528 21:07:58.419" endtime="20260528 21:07:58.460"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="modal-excluir-conta"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:07:58.460" endtime="20260528 21:07:58.474"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:58.418" endtime="20260528 21:07:58.474"/>
-</kw>
-<kw name="Cancelar Exclusao">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=.btn-cancelar</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:07:58.475" level="INFO">Clicking element 'css=.btn-cancelar'.</msg>
-<status status="PASS" starttime="20260528 21:07:58.475" endtime="20260528 21:07:58.514"/>
-</kw>
-<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="modal-excluir-conta"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is not visible.</doc>
-<status status="PASS" starttime="20260528 21:07:58.514" endtime="20260528 21:08:08.524"/>
-</kw>
-<status status="PASS" starttime="20260528 21:07:58.475" endtime="20260528 21:08:08.524"/>
-</kw>
-<kw name="Verificar Tela Configuracoes">
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css=.configuracoes-card</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20260528 21:08:08.541" level="INFO">Element 'css=.configuracoes-card' is displayed.</msg>
-<status status="PASS" starttime="20260528 21:08:08.525" endtime="20260528 21:08:08.541"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:08.525" endtime="20260528 21:08:08.541"/>
-</kw>
-<kw name="Clicar Botao Voltar Configuracoes">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-voltar-config"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:08.543" level="INFO">Clicking element 'css=[data-testid="btn-voltar-config"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:08.542" endtime="20260528 21:08:08.619"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:08.620" endtime="20260528 21:08:08.639"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:08.542" endtime="20260528 21:08:08.639"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:08.640" endtime="20260528 21:08:08.654"/>
-</kw>
-<kw name="Logout Da Tela Principal">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-sair-principal"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:08.656" level="INFO">Clicking element 'css=[data-testid="btn-sair-principal"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:08.656" endtime="20260528 21:08:08.711"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-page"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:08.711" endtime="20260528 21:08:08.725"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:08.656" endtime="20260528 21:08:08.726"/>
-</kw>
-<kw name="Realizar Login">
-<arg>${EMAIL_TESTE}</arg>
-<arg>${SENHA_TESTE}</arg>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:08.727" endtime="20260528 21:08:08.741"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>${email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:08.742" level="INFO">Typing text 'teste@exclusao.com' into text field 'css=[data-testid="login-email"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:08.741" endtime="20260528 21:08:08.809"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-senha"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:08.810" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="login-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:08.809" endtime="20260528 21:08:08.871"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="login-submit"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:08.872" level="INFO">Clicking element 'css=[data-testid="login-submit"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:08.872" endtime="20260528 21:08:08.917"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:08.917" endtime="20260528 21:08:08.931"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:08.726" endtime="20260528 21:08:08.931"/>
-</kw>
-<kw name="Verificar Login Com Sucesso">
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20260528 21:08:08.945" level="INFO">Element 'css=.main-container' is displayed.</msg>
-<status status="PASS" starttime="20260528 21:08:08.931" endtime="20260528 21:08:08.945"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:08.931" endtime="20260528 21:08:08.945"/>
-</kw>
-<kw name="Logout Da Tela Principal">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-sair-principal"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:08.945" level="INFO">Clicking element 'css=[data-testid="btn-sair-principal"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:08.945" endtime="20260528 21:08:08.988"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-page"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:08.988" endtime="20260528 21:08:09.001"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:08.945" endtime="20260528 21:08:09.001"/>
-</kw>
-<doc>Verifica se a conta é mantida ao cancelar o processo de exclusão</doc>
-<tag>cancelar</tag>
-<tag>exclusao</tag>
-<tag>US010</tag>
-<status status="PASS" starttime="20260528 21:07:58.166" endtime="20260528 21:08:09.002"/>
-</test>
-<test id="s1-t5" name="US010-CT05 Excluir conta com sucesso" line="67">
-<kw name="Realizar Login">
-<arg>${EMAIL_TESTE}</arg>
-<arg>${SENHA_TESTE}</arg>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:09.003" endtime="20260528 21:08:09.016"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>${email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.016" level="INFO">Typing text 'teste@exclusao.com' into text field 'css=[data-testid="login-email"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.016" endtime="20260528 21:08:09.077"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-senha"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.078" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="login-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.077" endtime="20260528 21:08:09.140"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="login-submit"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.140" level="INFO">Clicking element 'css=[data-testid="login-submit"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.140" endtime="20260528 21:08:09.184"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.main-container</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:09.185" endtime="20260528 21:08:09.198"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.003" endtime="20260528 21:08:09.198"/>
-</kw>
-<kw name="Clicar Em Configuracoes">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-configuracoes"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.200" level="INFO">Clicking element 'css=[data-testid="btn-configuracoes"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.200" endtime="20260528 21:08:09.242"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=.configuracoes-card</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:09.242" endtime="20260528 21:08:09.256"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.200" endtime="20260528 21:08:09.256"/>
-</kw>
-<kw name="Clicar Em Excluir Conta">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-excluir-conta"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.256" level="INFO">Clicking element 'css=[data-testid="btn-excluir-conta"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.256" endtime="20260528 21:08:09.297"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="modal-excluir-conta"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:09.297" endtime="20260528 21:08:09.311"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.256" endtime="20260528 21:08:09.311"/>
-</kw>
-<kw name="Digitar Senha Exclusao">
-<arg>${SENHA_TESTE}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="input-senha-exclusao"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.313" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="input-senha-exclusao"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.312" endtime="20260528 21:08:09.368"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.312" endtime="20260528 21:08:09.368"/>
-</kw>
-<kw name="Confirmar Exclusao">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="btn-confirmar-excluir-conta"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.369" level="INFO">Clicking element 'css=[data-testid="btn-confirmar-excluir-conta"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.369" endtime="20260528 21:08:09.412"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.368" endtime="20260528 21:08:09.412"/>
-</kw>
-<kw name="Verificar Redirecionamento Login">
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20260528 21:08:09.413" endtime="20260528 21:08:09.426"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.413" endtime="20260528 21:08:09.426"/>
-</kw>
-<kw name="Tentar Login Com Credenciais Excluidas">
-<arg>${EMAIL_TESTE}</arg>
-<arg>${SENHA_TESTE}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-email"]</arg>
-<arg>${email}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.427" level="INFO">Typing text 'teste@exclusao.com' into text field 'css=[data-testid="login-email"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.427" endtime="20260528 21:08:09.487"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>css=[data-testid="login-senha"]</arg>
-<arg>${senha}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.489" level="INFO">Typing text 'Teste123@' into text field 'css=[data-testid="login-senha"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.487" endtime="20260528 21:08:09.548"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>css=[data-testid="login-submit"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20260528 21:08:09.548" level="INFO">Clicking element 'css=[data-testid="login-submit"]'.</msg>
-<status status="PASS" starttime="20260528 21:08:09.548" endtime="20260528 21:08:09.592"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.426" endtime="20260528 21:08:09.592"/>
-</kw>
-<kw name="Verificar Mensagem Erro Login">
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css=[data-testid="login-error"]</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20260528 21:08:09.608" level="INFO">Element 'css=[data-testid="login-error"]' is displayed.</msg>
-<status status="PASS" starttime="20260528 21:08:09.593" endtime="20260528 21:08:09.608"/>
-</kw>
-<status status="PASS" starttime="20260528 21:08:09.593" endtime="20260528 21:08:09.608"/>
-</kw>
-<doc>Verifica se a conta é excluída permanentemente ao confirmar com senha correta</doc>
-<tag>exclusao</tag>
+<doc>Verifica se o cadastro é realizado com dados válidos</doc>
+<tag>cadastro</tag>
 <tag>sucesso</tag>
-<tag>US010</tag>
-<status status="PASS" starttime="20260528 21:08:09.002" endtime="20260528 21:08:09.608"/>
+<tag>US004</tag>
+<status status="PASS" starttime="20260601 21:31:03.107" endtime="20260601 21:31:05.781"/>
 </test>
-<kw name="Fechar Navegador" type="TEARDOWN">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20260528 21:08:09.609" endtime="20260528 21:08:11.762"/>
+<test id="s1-t2" name="US004-CT02 Cadastro com Campos Vazios" line="24">
+<kw name="Ir Para Pagina">
+<arg>${BASE_URL}</arg>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20260601 21:31:05.782" level="INFO">Opening url 'http://localhost:3000'</msg>
+<status status="PASS" starttime="20260601 21:31:05.782" endtime="20260601 21:31:05.813"/>
 </kw>
-<status status="PASS" starttime="20260528 21:08:09.609" endtime="20260528 21:08:11.763"/>
+<status status="PASS" starttime="20260601 21:31:05.782" endtime="20260601 21:31:05.813"/>
 </kw>
-<doc>Testes para US-010 - Excluir conta e dados permanentemente</doc>
-<status status="PASS" starttime="20260528 21:07:32.569" endtime="20260528 21:08:11.763"/>
-</suite>
-<statistics>
-<total>
-<stat pass="5" fail="0" skip="0">All Tests</stat>
-</total>
-<tag>
-<stat pass="1" fail="0" skip="0">aviso</stat>
-<stat pass="1" fail="0" skip="0">cancelar</stat>
-<stat pass="4" fail="0" skip="0">exclusao</stat>
-<stat pass="1" fail="0" skip="0">senha-incorreta</stat>
-<stat pass="1" fail="0" skip="0">setup</stat>
-<stat pass="1" fail="0" skip="0">sucesso</stat>
-<stat pass="5" fail="0" skip="0">US010</stat>
-</tag>
-<suite>
-<stat pass="5" fail="0" skip="0" id="s1" name="Us010">Us010</stat>
-</suite>
-</statistics>
+<kw name="Clicar Em Cadastro">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=.login-link</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:05.814" level="INFO">Clicking element 'css=.login-link'.</msg>
+<status status="PASS" starttime="20260601 21:31:05.814" endtime="20260601 21:31:05.892"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.cadastro-form</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20260601 21:31:05.892" endtime="20260601 21:31:05.915"/>
+</kw>
+<status status="PASS" starttime="20260601 21:31:05.814" endtime="20260601 21:31:05.915"/>
+</kw>
+<kw name="Submeter Cadastro">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=[data-testid="cadastro-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:05.916" level="INFO">Clicking element 'css=[data-testid="cadastro-submit"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:05.916" endtime="20260601 21:31:05.972"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=[data-testid="login-email"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<msg timestamp="20260601 21:31:16.585" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20260601 21:31:16.585" level="FAIL">Element 'css=[data-testid="login-email"]' not visible after 10 seconds.</msg>
+<status status="FAIL" starttime="20260601 21:31:05.973" endtime="20260601 21:31:16.587"/>
+</kw>
+<status status="FAIL" starttime="20260601 21:31:05.916" endtime="20260601 21:31:16.587"/>
+</kw>
+<kw name="Verificar Mensagem Erro Nome Obrigatorio">
+<status status="NOT RUN" starttime="20260601 21:31:16.587" endtime="20260601 21:31:16.587"/>
+</kw>
+<doc>Verifica se o sistema exibe erros ao tentar cadastro com campos vazios</doc>
+<tag>cadastro</tag>
+<tag>US004</tag>
+<tag>validacao</tag>
+<status status="FAIL" starttime="20260601 21:31:05.782" endtime="20260601 21:31:16.587">Element 'css=[data-testid="login-email"]' not visible after 10 seconds.</status>
+</test>
+<test id="s1-t3" name="US004-CT03 Cadastro com Email Inválido" line="32">
+<kw name="Ir Para Pagina">
+<arg>${BASE_URL}</arg>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20260601 21:31:16.589" level="INFO">Opening url 'http://localhost:3000'</msg>
+<status status="PASS" starttime="20260601 21:31:16.589" endtime="20260601 21:31:16.620"/>
+</kw>
+<status status="PASS" starttime="20260601 21:31:16.589" endtime="20260601 21:31:16.620"/>
+</kw>
+<kw name="Clicar Em Cadastro">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=.login-link</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:16.621" level="INFO">Clicking element 'css=.login-link'.</msg>
+<status status="PASS" starttime="20260601 21:31:16.621" endtime="20260601 21:31:16.682"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.cadastro-form</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20260601 21:31:16.682" endtime="20260601 21:31:16.700"/>
+</kw>
+<status status="PASS" starttime="20260601 21:31:16.621" endtime="20260601 21:31:16.700"/>
+</kw>
+<kw name="Preencher Nome Cadastro">
+<arg>Maria Santos</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css=[data-testid="cadastro-nome"]</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:16.700" level="INFO">Typing text 'Maria Santos' into text field 'css=[data-testid="cadastro-nome"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:16.700" endtime="20260601 21:31:16.774"/>
+</kw>
+<status status="PASS" starttime="20260601 21:31:16.700" endtime="20260601 21:31:16.774"/>
+</kw>
+<kw name="Preencher Email Cadastro">
+<arg>mariasantosemail.com</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css=[data-testid="cadastro-email"]</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:16.774" level="INFO">Typing text 'mariasantosemail.com' into text field 'css=[data-testid="cadastro-email"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:16.774" endtime="20260601 21:31:16.849"/>
+</kw>
+<status status="PASS" starttime="20260601 21:31:16.774" endtime="20260601 21:31:16.849"/>
+</kw>
+<kw name="Preencher Senha Cadastro">
+<arg>Senha123@</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css=[data-testid="cadastro-senha"]</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:16.851" level="INFO">Typing text 'Senha123@' into text field 'css=[data-testid="cadastro-senha"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:16.851" endtime="20260601 21:31:16.914"/>
+</kw>
+<status status="PASS" starttime="20260601 21:31:16.851" endtime="20260601 21:31:16.914"/>
+</kw>
+<kw name="Preencher Confirmar Senha Cadastro">
+<arg>Senha123@</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css=[data-testid="cadastro-confirmar-senha"]</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:16.915" level="INFO">Typing text 'Senha123@' into text field 'css=[data-testid="cadastro-confirmar-senha"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:16.915" endtime="20260601 21:31:17.011"/>
+</kw>
+<status status="PASS" starttime="20260601 21:31:16.914" endtime="20260601 21:31:17.011"/>
+</kw>
+<kw name="Submeter Cadastro">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css=[data-testid="cadastro-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20260601 21:31:17.012" level="INFO">Clicking element 'css=[data-testid="cadastro-submit"]'.</msg>
+<status status="PASS" starttime="20260601 21:31:17.011" endtime="20260601 21:31:17.080"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=[data-testid="login-email"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<msg timestamp="20260601 21:31:23.941" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001CB9455D910&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /session/48e6797139599f5b3e61f986a4605c6f/screenshot</msg>
+<msg timestamp="20260601 21:31:28.022" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001CB94574690&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /session/48e6797139599f5b3e61f986a4605c6f/screenshot</msg>
 <errors>
+<msg timestamp="20260601 21:31:23.941" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001CB9455D910&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /session/48e6797139599f5b3e61f986a4605c6f/screenshot</msg>
+<msg timestamp="20260601 21:31:28.022" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001CB94574690&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /session/48e6797139599f5b3e61f986a4605c6f/screenshot</msg>
+<msg timestamp="20260601 21:31:30.071" level="ERROR">Execution stopped by user.</msg>
 </errors>
 </robot>

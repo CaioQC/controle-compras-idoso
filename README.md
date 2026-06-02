@@ -4,21 +4,91 @@ Projeto desenvolvido para a disciplina de Teste de Software. O sistema consiste 
 
 ## Execução do projeto (como rodar)
 
-Este repositório possui uma aplicação **frontend** em React + Vite dentro da pasta `front_end_usuario/tela-compras/`.
+Este repositório possui uma aplicação **frontend** em React + Vite dentro da pasta `front_end_usuario/tela-compras/` e uma **API backend** em NestJS dentro da pasta `back_end/lista-compras-api/`.
 
 ### Pré-requisitos
 - **Node.js** (recomendado: LTS)
 - **npm** (ou gerenciador compatível)
 
-### Rodando em desenvolvimento
+---
+
+## Rodar tudo em um único comando (Recomendado)
+
+Na raiz do projeto, execute:
+
+**Windows:**
+```bash
+.\start-all.bat
+```
+
+**Linux/Mac:**
+```bash
+chmod +x start-all.sh
+./start-all.sh
+```
+
+Este comando irá:
+1. Compilar o frontend para produção
+2. Gerar o cliente Prisma
+3. Iniciar o backend NestJS
+4. Servir o frontend através do backend
+
+Acesse no navegador: **`http://localhost:3000`**
+
+> **Acesso ao Sistema (Credenciais de Teste):**
+> - **Usuário:** admin@familia.com
+> - **Senha:** 123456
+
+---
+
+## Rodar separadamente (Desenvolvimento)
+
+### Frontend (React + Vite)
+
 - Acesse a pasta do app: `cd front_end_usuario/tela-compras`
 - Instale as dependências: `npm install`
 - Suba o servidor de desenvolvimento: `npm run dev`
 - Acesse no navegador: `http://localhost:5173`
 
-> **Acesso ao Sistema (Credenciais de Teste):**
-> - **Usuário:** admin@familia.com
-> - **Senha:** 123456
+### Backend (NestJS API)
+
+1. Acesse a pasta do backend:
+   ```bash
+   cd back_end/lista-compras-api
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+3. Gere o cliente Prisma (ORM):
+   ```bash
+   npx prisma generate
+   ```
+
+4. Suba o servidor em modo de desenvolvimento:
+   ```bash
+   npm run start:dev
+   ```
+
+   A API estará disponível em `http://localhost:3000`
+
+### Endpoints Principais
+
+- `POST /usuario` - Criar novo usuário (público)
+- `GET /usuario` - Listar usuários (requer perfil ADMIN)
+- `GET /usuario/:id` - Buscar usuário por ID (requer perfil ADMIN)
+- `PATCH /usuario/:id` - Atualizar usuário
+- `DELETE /usuario/:id` - Deletar usuário (público)
+
+### Estrutura do Backend
+
+- `src/usuario/` - Módulo de usuários
+- `src/itens-compra/` - Módulo de itens de compra
+- `src/categorias/` - Módulo de categorias
+- `src/auth/` - Módulo de autenticação
+- `prisma/` - Schema do banco de dados (SQLite)
 
 ---
 
@@ -172,55 +242,4 @@ Este repositório possui uma aplicação **frontend** em React + Vite dentro da 
 
 ## 5. Automação de Testes
 
-Os cenários acima servem de base para a automação utilizando **Selenium** com **Python**, validando o fluxo de ponta a ponta (E2E) desde o login até a manipulação da lista. Sempre que for subir uma nova alteração no código, os testes automatizados serão executados para garantir que as funcionalidades antigas continuam funcionando (teste de regressão).
-
----
-
-## 6. Testes automatizados (BDD / Gherkin + Selenium)
-
-Os testes E2E foram implementados com:
-
-- `behave` (BDD) para executar os arquivos `.feature` (Gherkin)
-- `selenium` para automatizar o navegador
-
-Observação: como os cenários estão em português, cada arquivo `.feature` possui o cabeçalho:
-
-- `# language: pt`
-
-### Estrutura
-
-- `tests/requirements.txt`
-- `tests/features/login.feature`
-- `tests/features/itens.feature`
-- `tests/features/environment.py`
-- `tests/features/steps/ui_steps.py`
-
-### Como rodar (linha por linha)
-
-#### 1) Subir o frontend (terminal 1)
-
-1. Entrar na pasta do frontend:
-   - `cd front_end_usuario/tela-compras`
-2. Instalar dependências:
-   - `npm install`
-3. Subir o Vite:
-   - `npm run dev`
-
-Deixe esse terminal rodando.
-
-#### 2) Instalar dependências de teste (terminal 2)
-
-Na **raiz** do repositório (pasta `controle-compras-idoso`):
-
-- `pip install -r tests/requirements.txt`
-
-#### 3) Executar os testes
-
-Na **raiz** do repositório:
-
-- Rodar tudo:
-  - `behave tests/features`
-- Rodar só login:
-  - `behave tests/features/login.feature`
-- Rodar só itens:
-  - `behave tests/features/itens.feature`
+Os testes automatizados são implementados utilizando **Robot Framework** com bibliotecas para automação web, validando o fluxo de ponta a ponta (E2E) desde o login até a manipulação da lista.
