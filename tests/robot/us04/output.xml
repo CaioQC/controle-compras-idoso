@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-05-31T17:18:11.049876" rpa="false" schemaversion="5">
+<suite id="s1" name="Us04 Cadastrar Categoria" source="C:\Users\User\git\controle-compras-idoso\tests\robot\us04\us04_cadastrar_categoria.robot">
+<kw name="Configurar Suite" type="SETUP">
+<kw name="Abrir Navegador" owner="Keywords_us04">
+<arg>${URL}</arg>
+<status status="PASS" start="2026-05-31T17:18:11.226812" elapsed="0.912449"/>
+</kw>
+<kw name="Fazer Login Admin" owner="Keywords_us04">
+<arg>${ADMIN_EMAIL}</arg>
+<arg>${ADMIN_SENHA}</arg>
+<status status="PASS" start="2026-05-31T17:18:12.139431" elapsed="1.220839"/>
+</kw>
+<status status="PASS" start="2026-05-31T17:18:11.226511" elapsed="2.133871"/>
+</kw>
+<test id="s1-t1" name="CT-04-01 Categoria cadastrada com sucesso" line="19">
+<kw name="Ir Para Gerenciar Categorias" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:13.360884" elapsed="0.573608"/>
+</kw>
+<kw name="Preencher Nome Categoria" owner="Keywords_us04">
+<arg>${CATEGORIA_TESTE}</arg>
+<status status="PASS" start="2026-05-31T17:18:13.934796" elapsed="0.073977"/>
+</kw>
+<kw name="Clicar Em Adicionar Categoria" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:14.009019" elapsed="0.544355"/>
+</kw>
+<kw name="Verificar Categoria Na Lista" owner="Keywords_us04">
+<arg>${CATEGORIA_TESTE}</arg>
+<status status="PASS" start="2026-05-31T17:18:14.553707" elapsed="0.028877"/>
+</kw>
+<kw name="Excluir Categoria Por Nome" owner="Keywords_us04">
+<arg>${CATEGORIA_TESTE}</arg>
+<doc>Clica no botão excluir da categoria com o nome especificado.</doc>
+<status status="PASS" start="2026-05-31T17:18:14.582847" elapsed="0.574067"/>
+</kw>
+<kw name="Voltar Para Painel Admin" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:15.157263" elapsed="0.548231"/>
+</kw>
+<doc>Validar que o usuário admin cadastra categoria com nome válido.</doc>
+<status status="PASS" start="2026-05-31T17:18:13.360466" elapsed="2.345403"/>
+</test>
+<test id="s1-t2" name="CT-04-02 Campo obrigatório vazio" line="28">
+<kw name="Ir Para Gerenciar Categorias" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:15.706825" elapsed="0.540801"/>
+</kw>
+<kw name="Clicar Em Adicionar Categoria" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:16.247945" elapsed="0.542065"/>
+</kw>
+<kw name="Verificar Mensagem Erro Categoria" owner="Keywords_us04">
+<arg>O nome da categoria é obrigatório</arg>
+<status status="PASS" start="2026-05-31T17:18:16.790394" elapsed="0.011721"/>
+</kw>
+<kw name="Voltar Para Painel Admin" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:16.802391" elapsed="0.541466"/>
+</kw>
+<doc>Validar que o sistema bloqueia cadastro sem nome de categoria.</doc>
+<status status="PASS" start="2026-05-31T17:18:15.706411" elapsed="1.637744"/>
+</test>
+<test id="s1-t3" name="CT-04-03 Categoria duplicada" line="35">
+<kw name="Ir Para Gerenciar Categorias" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:17.345025" elapsed="0.539229"/>
+</kw>
+<kw name="Preencher Nome Categoria" owner="Keywords_us04">
+<arg>Medicamento</arg>
+<status status="PASS" start="2026-05-31T17:18:17.884545" elapsed="0.059150"/>
+</kw>
+<kw name="Clicar Em Adicionar Categoria" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:17.943965" elapsed="0.540787"/>
+</kw>
+<kw name="Verificar Mensagem Erro Categoria" owner="Keywords_us04">
+<arg>Esta categoria já existe</arg>
+<status status="PASS" start="2026-05-31T17:18:18.485165" elapsed="0.009657"/>
+</kw>
+<kw name="Voltar Para Painel Admin" owner="Keywords_us04">
+<status status="PASS" start="2026-05-31T17:18:18.495065" elapsed="0.539951"/>
+</kw>
+<doc>Validar que o sistema impede cadastro de categoria com nome já existente.</doc>
+<status status="PASS" start="2026-05-31T17:18:17.344643" elapsed="1.690730"/>
+</test>
+<kw name="Fechar Navegador" owner="Keywords_us04" type="TEARDOWN">
+<status status="PASS" start="2026-05-31T17:18:19.036124" elapsed="2.167640"/>
+</kw>
+<status status="PASS" start="2026-05-31T17:18:11.051202" elapsed="10.152628"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Us04 Cadastrar Categoria" id="s1" pass="3" fail="0" skip="0">Us04 Cadastrar Categoria</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
