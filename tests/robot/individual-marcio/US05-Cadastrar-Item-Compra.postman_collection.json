@@ -1,0 +1,243 @@
+{
+  "info": {
+    "name": "US-05 — Cadastrar Item de Compra",
+    "description": "Testes de API para o endpoint POST /itens-compra (US-005).\n\nO endpoint exige autenticacao JWT (qualquer usuario logado pode criar item).\nPara criar um item e necessario um categoriaId valido.\n\nORDEM DE EXECUCAO:\n1. 'Setup — Login Admin'  -> obtem o token e salva em {{admin_token}}\n2. 'Setup — Pegar categoria valida' -> salva o id de uma categoria em {{categoria_id}}\n3. Os casos de teste CT-05-xx\n\nDica: use o Collection Runner para rodar tudo na ordem de uma vez.\n\nPRE-REQUISITO: rodar o seed do backend (npx prisma db seed), que cria o usuario\nadmin@example.com / admin1! e as categorias iniciais.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000", "type": "string" },
+    { "key": "admin_token", "value": "", "type": "string" },
+    { "key": "categoria_id", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Setup — Login Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"senha\": \"admin1!\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Login realizado com sucesso (200)\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var json = pm.response.json();",
+              "pm.test(\"Resposta contem access_token\", function () {",
+              "    pm.expect(json).to.have.property(\"access_token\");",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"admin_token\", json.access_token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Setup — Pegar categoria valida",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/categorias",
+          "host": ["{{base_url}}"],
+          "path": ["categorias"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Listagem de categorias OK (200)\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var json = pm.response.json();",
+              "pm.test(\"Existe ao menos uma categoria cadastrada\", function () {",
+              "    pm.expect(json).to.be.an(\"array\").that.is.not.empty;",
+              "});",
+              "",
+              "if (Array.isArray(json) && json.length > 0) {",
+              "    pm.collectionVariables.set(\"categoria_id\", json[0].id);",
+              "    console.log(\"categoria_id salvo:\", json[0].id);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-05-01 — Cadastro de item com sucesso",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Fralda geriatrica\",\n  \"quantidade\": 2,\n  \"observacao\": \"Tamanho G\",\n  \"categoriaId\": {{categoria_id}}\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/itens-compra",
+          "host": ["{{base_url}}"],
+          "path": ["itens-compra"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code deve ser 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "var json = pm.response.json();",
+              "pm.test(\"Resposta contem id do item criado\", function () {",
+              "    pm.expect(json).to.have.property(\"id\");",
+              "});",
+              "",
+              "pm.test(\"Nome do item corresponde ao enviado\", function () {",
+              "    pm.expect(json.nome).to.eql(\"Fralda geriatrica\");",
+              "});",
+              "",
+              "pm.test(\"Item nasce como nao comprado\", function () {",
+              "    pm.expect(json.comprado).to.eql(false);",
+              "});",
+              "",
+              "// guarda o id caso queira usar em testes futuros (ex.: marcar como comprado)",
+              "pm.collectionVariables.set(\"item_id\", json.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-05-02 — Sem informar o nome do item",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"quantidade\": 2,\n  \"observacao\": \"Sem nome\",\n  \"categoriaId\": {{categoria_id}}\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/itens-compra",
+          "host": ["{{base_url}}"],
+          "path": ["itens-compra"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// REQUISITO: a API deveria recusar item sem nome com status 400.",
+              "// ATENCAO: o projeto nao tem ValidationPipe ativo, entao na pratica isso",
+              "// pode retornar 201 ou 500. Se este teste FALHAR, e um defeito a reportar.",
+              "pm.test(\"Status code deve ser 400 (validacao de campo obrigatorio)\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Mensagem deve indicar nome obrigatorio\", function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(JSON.stringify(json.message)).to.include(\"nome do item\");",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-05-03 — Sem informar a categoria",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Item sem categoria\",\n  \"quantidade\": 1,\n  \"observacao\": \"teste\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/itens-compra",
+          "host": ["{{base_url}}"],
+          "path": ["itens-compra"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// REQUISITO: item sem categoriaId deveria retornar 400.",
+              "// Sem ValidationPipe, pode retornar 500 (erro de chave estrangeira no banco).",
+              "// Falha aqui = defeito a reportar.",
+              "pm.test(\"Status code deve ser 400 (categoria obrigatoria)\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT-05-04 — Sem token de autenticacao",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Item sem token\",\n  \"quantidade\": 1,\n  \"observacao\": \"teste\",\n  \"categoriaId\": {{categoria_id}}\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/itens-compra",
+          "host": ["{{base_url}}"],
+          "path": ["itens-compra"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code deve ser 401 (nao autorizado)\", function () {",
+              "    pm.response.to.have.status(401);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
