@@ -42,7 +42,6 @@ US010-CT03 Confirmar com senha incorreta
     Digitar Senha Exclusao    senha_errada
     Confirmar Exclusao
     Verificar Mensagem Erro Senha
-    # Modal não fecha com senha incorreta, então cancelamos
     Cancelar Exclusao
     Realizar Logout
 
@@ -54,11 +53,8 @@ US010-CT04 Cancelar exclusão de conta
     Clicar Em Excluir Conta
     Cancelar Exclusao
     Verificar Tela Configuracoes
-    # Usa o botão voltar para sair da tela de configurações
     Clicar Botao Voltar Configuracoes
-    # Aguarda voltar para a tela principal
     Wait Until Element Is Visible    css=.main-container    10s
-    # Agora faz logout da tela principal
     Logout Da Tela Principal
     Realizar Login    ${EMAIL_TESTE}    ${SENHA_TESTE}
     Verificar Login Com Sucesso
@@ -78,11 +74,7 @@ US010-CT05 Excluir conta com sucesso
 
 *** Keywords ***
 Abrir Navegador
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    Call Method    ${options}    add_argument    --log-level=3
-    Call Method    ${options}    add_argument    --disable-logging
-    Call Method    ${options}    add_experimental_option    excludeSwitches    enable-logging
-    Open Browser    ${BASE_URL}    chrome    options=${options}
+    Open Browser    ${BASE_URL}    chrome
     Set Selenium Implicit Wait    10s
     Maximize Browser Window
 
@@ -111,7 +103,6 @@ Digitar Senha Exclusao
 
 Confirmar Exclusao
     Click Element    css=[data-testid="btn-confirmar-excluir-conta"]
-    # Não espera o modal fechar pois pode não fechar com senha incorreta
 
 Cancelar Exclusao
     Click Element    css=.btn-cancelar
